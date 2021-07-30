@@ -1,0 +1,25 @@
+{
+  "name": "@pierreminiggio/tiktok-for-you-spammer",
+  "version": "1.0.0",
+  "description": "Tiktok For You Spammer",
+  "main": "main.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierreminiggio/tiktok-for-you-spammer.git"
+  },
+  "author": "Pierre MINIGGIO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pierreminiggio/tiktok-for-you-spammer/issues"
+  },
+  "homepage": "https://github.com/pierreminiggio/tiktok-for-you-spammer#readme",
+  "dependencies": {
+    "@pierreminiggio/puppeteer-page-scroller": "github:pierreminiggio/puppeteer-page-scroller",
+    "@pierreminiggio/tiktok-login": "github:pierreminiggio/tiktok-login",
+    "node": "^12.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
