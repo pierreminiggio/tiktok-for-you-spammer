@@ -12,7 +12,7 @@ Utilisation :
 ```javascript
 const post = require('@pierreminiggio/tiktok-for-you-spammer')
 spam(login, password, async (tikTok, comment) => {
-    await comment('whatever u want')
+    await comment('Hello ' + tikTok.author + ' !')
 }).then(() => {
     // done
 }).catch((err) => {

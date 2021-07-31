@@ -7,9 +7,7 @@ fs.readFile('./ids.json', 'utf-8', (err, data) => {
         ids.login,
         ids.password,
         async (tikTok, {comment}) => {
-            console.log('TikTok :')
-            console.log(tikTok)
-            await comment('Test comment ! :D')
+            await comment('Hello ' + tikTok.author + ' !')
         },
         2000,
         6000,
