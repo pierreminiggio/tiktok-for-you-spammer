@@ -11,7 +11,7 @@ export default async function comment(page, content, sendLog) {
     sendLog('Commenting ' + content)
     const commentEditorSelector = '[contenteditable="true"]'
     await page.waitForSelector(commentEditorSelector)
-    await type(page, commentEditorSelector, content, 1000)
+    await type(page, commentEditorSelector, content, 300)
 
     const postButtonSelector = '.post-container.active'
     await page.click(postButtonSelector)
