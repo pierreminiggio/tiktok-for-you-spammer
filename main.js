@@ -6,9 +6,9 @@ import comment from './src/comment.js';
 /**
  * @param {string} facebookLogin
  * @param {string} facebookPassword
+ * @param {TikTokFunction} tikTokFunction
  * @param {number} postScrollLength
  * @param {number} commentScrollLength
- * @param {TikTokFunction} tikTokFunction
  * @param {boolean} show
  * @param {string|null} proxy
  * @param {LogFunction} sendLog
@@ -18,9 +18,9 @@ import comment from './src/comment.js';
 export default function spam(
     facebookLogin,
     facebookPassword,
-    postScrollLength,
-    commentScrollLength,
     tikTokFunction,
+    postScrollLength = 20000,
+    commentScrollLength= 10000,
     proxy = null,
     show = false,
     sendLog = (toLog) => {}

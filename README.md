@@ -11,7 +11,7 @@ npm install pierreminiggio/tiktok-for-you-spammer
 Utilisation : 
 ```javascript
 const post = require('@pierreminiggio/tiktok-for-you-spammer')
-spam(login, password, postScrollLength, commentScrollLength, async (tikTok, comment) => {
+spam(login, password, async (tikTok, comment) => {
     await comment('whatever u want')
 }).then(() => {
     // done

@@ -6,13 +6,13 @@ fs.readFile('./ids.json', 'utf-8', (err, data) => {
     spam(
         ids.login,
         ids.password,
-        2000,
-        6000,
         async (tikTok, {comment}) => {
             console.log('TikTok :')
             console.log(tikTok)
             await comment('Test comment ! :D')
         },
+        2000,
+        6000,
         null,
         true,
         (toLog) => {console.log(toLog)},
