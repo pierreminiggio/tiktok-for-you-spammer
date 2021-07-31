@@ -103,6 +103,8 @@ export default function spam(
             await page.waitForTimeout(3000)
         }
 
+        await browser.close()
+
         resolve()
     })
 }
