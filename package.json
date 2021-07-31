@@ -16,6 +16,7 @@
   "homepage": "https://github.com/pierreminiggio/tiktok-for-you-spammer#readme",
   "dependencies": {
     "@pierreminiggio/puppeteer-page-scroller": "github:pierreminiggio/puppeteer-page-scroller",
+    "@pierreminiggio/puppeteer-text-typer": "github:pierreminiggio/puppeteer-text-typer",
     "@pierreminiggio/tiktok-login": "github:pierreminiggio/tiktok-login",
     "node": "^12.6.0"
   },

@@ -1,28 +1,29 @@
 import login from '@pierreminiggio/tiktok-login'
 import scroll from '@pierreminiggio/puppeteer-page-scroller'
-
-/**
- * @typedef {Function} LogFunction
- * @property {string} toLog
- */
+import getTikTokInfosAndComments from './src/getTikTokInfosAndComments.js';
+import comment from './src/comment.js';
 
 /**
  * @param {string} facebookLogin
  * @param {string} facebookPassword
- * @param {number} scrollLength
+ * @param {number} postScrollLength
+ * @param {number} commentScrollLength
+ * @param {TikTokFunction} tikTokFunction
  * @param {boolean} show
- * @param {LogFunction} sendLog
  * @param {string|null} proxy
+ * @param {LogFunction} sendLog
  * 
  * @returns {Promise<>}
  */
-export default function post(
+export default function spam(
     facebookLogin,
     facebookPassword,
-    scrollLength,
+    postScrollLength,
+    commentScrollLength,
+    tikTokFunction,
+    proxy = null,
     show = false,
-    sendLog = (toLog) => {},
-    proxy = null
+    sendLog = (toLog) => {}
 ) {
     return new Promise(async (resolve, rejects) => {
 
@@ -41,9 +42,14 @@ export default function post(
             return
         }
 
+        // Accept Cookies
+        await page.evaluate(() => {
+            document.querySelector('.cookie-banner button')?.click()
+        })
+
         const browser = page.browser()
 
-        await scroll(page, scrollLength)
+        await scroll(page, postScrollLength)
 
         const tikTokLinks = await page.evaluate(() => {
 
@@ -78,7 +84,24 @@ export default function post(
             return tikTokLinks
         })
 
-        console.log(tikTokLinks)
+        for (const tikTokLinkIndex in tikTokLinks) {
+            const tikTokLink = tikTokLinks[tikTokLinkIndex]
+            const tikTok = await getTikTokInfosAndComments(
+                page,
+                tikTokLink,
+                commentScrollLength,
+                sendLog
+            )
+
+            await tikTokFunction(
+                tikTok,
+                {
+                    comment: async content => await comment(page, content, sendLog)
+                }
+            )
+
+            await page.waitForTimeout(3000)
+        }
 
         resolve()
     })
